@@ -1,0 +1,128 @@
+generated: '2026-08-26'
+method: probed
+source: live HTTP probes of www.remilk.com and remilk.com
+hit_count: 0
+note: >-
+  No /.well-known document is served by any Remilk host, so NO WellKnown and NO SecurityTxt
+  pointer is wired — this file records an absence, not a presence. www.remilk.com is a Webflow
+  site; every /.well-known/* path returns an honest HTTP 404 carrying Webflow's 88-byte
+  "Invalid .well-known request" body, which is distinguishable from Webflow's ordinary 6,107-byte
+  404 page served for non-well-known paths, so this host is NOT a soft-404 catch-all. The apex
+  remilk.com 301-redirects every path to www. No API host exists to probe: api., dev., developer.,
+  docs., data., app., platform., mcp. and portal..remilk.com return NXDOMAIN.
+hosts:
+- host: https://www.remilk.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    content_type: text/html
+    file: null
+- host: https://remilk.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    content_type: text/html
+    file: null
+    note: apex 301-redirects to www.remilk.com
+  - path: /.well-known/openid-configuration
+    status: 301
+    content_type: text/html
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    content_type: text/html
+    file: null
+  - path: /.well-known/api-catalog
+    status: 301
+    content_type: text/html
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    content_type: text/html
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 301
+    content_type: text/html
+    file: null
+x-evidence:
+  fetched: '2026-08-26'
+  hosts_probed:
+  - www.remilk.com
+  - remilk.com
+  soft_404_control:
+    url: https://www.remilk.com/openapi.json
+    status: 404
+    bytes: 6107
+    note: >-
+      Webflow's standard 404 page. The /.well-known/* responses are a DIFFERENT 88-byte body,
+      confirming the host is not answering 200 for arbitrary paths.
+  other_paths:
+  - url: https://www.remilk.com/robots.txt
+    status: 200
+    bytes: 0
+  - url: https://www.remilk.com/sitemap.xml
+    status: 404
+  - url: https://www.remilk.com/llms.txt
+    status: 404
+  contract_discovery:
+    openapi_probes:
+    - url: https://www.remilk.com/openapi.json
+      status: 404
+    - url: https://www.remilk.com/openapi.yaml
+      status: 404
+    - url: https://www.remilk.com/swagger.json
+      status: 404
+    - url: https://www.remilk.com/v1/openapi.json
+      status: 404
+    - url: https://www.remilk.com/api-docs
+      status: 404
+    - url: https://www.remilk.com/docs
+      status: 404
+    - url: https://www.remilk.com/redoc
+      status: 404
+    - url: https://www.remilk.com/api
+      status: 404
+    - url: https://www.remilk.com/developers
+      status: 404
+    graphql_probes:
+    - url: https://www.remilk.com/graphql
+      status: 404
+    dns:
+      note: >-
+        api., dev., developer., docs., data., app., platform., mcp. and portal..remilk.com return
+        no A record (NXDOMAIN) — there is no wildcard and no API host.
+    registries:
+    - url: https://registry.npmjs.org/-/v1/search?text=remilk
+      status: 200
+      result: no packages
+    - url: https://pypi.org/pypi/remilk/json
+      status: 404
+    - url: https://api.github.com/users/remilk
+      status: 200
+      result: >-
+        a personal GitHub User account with 0 public repos, no name, bio or blog — not a Remilk
+        organization

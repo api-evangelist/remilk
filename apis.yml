@@ -1,17 +1,40 @@
 aid: remilk
 name: Remilk
-description: 'Remilk is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Remilk is a food-technology company, founded in 2019 by Aviv Wolff and Ori Cohavi and
+  headquartered in Rehovot, Israel, that produces animal-free dairy proteins by precision
+  fermentation. The company inserts the gene that codes for a cow milk protein into a yeast
+  strain from the same family used in brewing and baking, ferments it at scale, and harvests a
+  milk protein it describes as identical to the bovine original but free of lactose, cholesterol,
+  hormones and antibiotics; the protein is then formulated with non-animal fat and sugar,
+  vitamins and minerals into finished dairy products. Remilk has raised more than $150M, and was
+  the first company to win regulatory clearance for a precision-fermented dairy protein in
+  Israel, with subsequent clearances in Singapore, the United States (GRAS) and Canada. In
+  November 2025 it commercialised the ingredient with Gad Dairies, Israel's fourth-largest dairy
+  company, launching "The New Milk" barista and retail line, and it has publicly paused its plan
+  to build what would have been the world's largest precision fermentation facility in Denmark.
+  Remilk sells a food ingredient and consumer dairy products, not software: it operates no
+  developer program, publishes no API, SDK, or machine-readable specification, and maintains no
+  public source-code organization.
 url: https://raw.githubusercontent.com/api-evangelist/remilk/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
+specificationVersion: '0.23'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
+- Food Technology
+- Precision Fermentation
+- Biotechnology
+- Alternative Proteins
+- Dairy
+- Ingredients
+- Synthetic Biology
+- Sustainability
+- Consumer Packaged Goods
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +42,50 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/remilk-domain-security.yml
 - type: Website
+  url: https://www.remilk.com/
+- type: Newsroom
+  url: https://www.remilk.com/newsroom
+- type: Careers
+  url: https://www.remilk.com/careers
+- type: Contact
+  url: https://www.remilk.com/contact-us
+- type: LinkedIn
+  url: https://www.linkedin.com/company/remilk
+- type: SecondaryMarket
   url: https://www.hiive.com/securities/remilk-stock
+x-enrichment:
+  date: '2026-08-26'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    Remilk sells a precision-fermented milk protein and the consumer dairy products made from it,
+    so there is nothing to expose as an API — www.remilk.com is an eight-page Webflow marketing
+    site (Our Mission, Science, Gains, Remilk Cares, Careers, Newsroom, Contact Us) whose only
+    non-404 machine-readable path is a zero-byte robots.txt, every /.well-known/* path returns
+    Webflow's "Invalid .well-known request" 404, and api./dev./docs./developer./app./platform./
+    mcp./portal.remilk.com do not resolve in DNS at all.
+  evidence:
+  - url: https://www.remilk.com/
+    status: 200
+  - url: https://www.remilk.com/openapi.json
+    status: 404
+  - url: https://www.remilk.com/graphql
+    status: 404
+  - url: https://www.remilk.com/llms.txt
+    status: 404
+  - url: https://www.remilk.com/.well-known/agent-card.json
+    status: 404
+  - url: https://www.remilk.com/.well-known/security.txt
+    status: 404
+  - url: https://www.remilk.com/robots.txt
+    status: 200
+  - url: https://api.remilk.com/
+    status: 0
+  checked: '2026-08-26'
